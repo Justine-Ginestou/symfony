@@ -1,11 +1,18 @@
-
-$theme-colors: (
-        "secondary": #,
-        "primary": #
-);
 @import "~bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap/scss/_variables.scss";
 
+$primary: #FFFFFF;
+$secondary: #EDA3A4;
+$roseFonce: #E6696C;
+
 body {
     background-color: $primary;
+}
+
+h1 {
+    color: $secondary;
+}
+
+.navBar {
+    background-color: $secondary;
 }
