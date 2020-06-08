@@ -97,7 +97,7 @@ class WildController extends AbstractController
 
     /**
      * @param int $id
-     * @Route("wild/program/season/{id}"), name="show_season")
+     * @Route("wild/program/season/{id}", name="show_by_season")
      */
     public function showBySeason(int $id)
     {
@@ -110,6 +110,22 @@ class WildController extends AbstractController
             'episodes'=> $episodes,
             'season'=> $season,
             'program'=>$program
+        ]);
+    }
+
+    /**
+     * @Route("wild/episode/{id}", name="show_episode")
+     * @param Episode $episode
+     * @return Response
+     */
+    public function showEpisode(Episode $episode)
+    {
+        $season = $episode->getSeason();
+        $program = $season->getProgram();
+        return $this->render('wild/showEpisode.html.twig', [
+            'episode' => $episode,
+            'season'=> $season,
+            'program'=> $program
         ]);
     }
 }

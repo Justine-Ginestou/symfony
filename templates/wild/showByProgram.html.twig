@@ -12,7 +12,7 @@
             <p>Catégorie : {{ seasons[0].program.category.name }}</p>
 
         {% for season in seasons %}
-            <a href="/wild/program/season/{{ season.id }}">Saison {{ season.number }}</a>
+            <a href="{{ path('show_by_season', {'id':season.id}) }}">Saison {{ season.number }}</a>
         {% endfor %}
         </div>
     </div>
