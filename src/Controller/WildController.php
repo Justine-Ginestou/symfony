@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Program;
 use App\Entity\Category;
+use App\Entity\Season;
+use App\Entity\Episode;
 
 class WildController extends AbstractController
 {
@@ -72,6 +74,42 @@ class WildController extends AbstractController
             'programs'=> $programs,
             'category'=> $category
         ]);
+    }
 
+    /**
+     * @param string $slug
+     * @Route("wild/program/{slug}", name="show_by_program")
+     */
+    public function showByProgram(string $slug)
+    {
+        if(!$slug){
+            throw $this->createNotFoundException('No serie is selected, please choose a serie');
+        }
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneBy(['title'=>$slug]);
+        $seasons = $program->getSeasons();
+         return $this->render('wild/showByProgram.html.twig', [
+             'seasons'=> $seasons,
+             'program'=> $program
+         ]);
+    }
+
+    /**
+     * @param int $id
+     * @Route("wild/program/season/{id}"), name="show_season")
+     */
+    public function showBySeason(int $id)
+    {
+        $season = $this->getDoctrine()
+            ->getRepository(Season::class)
+            ->findOneBy(['id'=>$id]);
+        $episodes = $season->getEpisodes();
+        $program = $season->getProgram();
+        return $this->render('wild/showBySeason.html.twig', [
+            'episodes'=> $episodes,
+            'season'=> $season,
+            'program'=>$program
+        ]);
     }
 }
