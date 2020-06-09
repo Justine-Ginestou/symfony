@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une catégorie{% endblock %}
+{% block title %}Les catégories{% endblock %}
 
 {% block body %}
-    <h1>Ajout d'une nouvelle catégorie</h1>
-    {{ form_start(form) }}
-        {{ form_row(form.name) }}
-        <button class="btn">{{ button_label|default('Save') }}</button>
-    {{ form_end(form) }}
+    <h1>Liste des catégories</h1>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{{ path('category_one', {id: category.id}) }}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{{ path('category_add') }}">Ajouter une catégorie</a>
     <a href="{{ path('app_index') }}">
         Retour à l'accueil
     </a>
