@@ -26,14 +26,14 @@ class Program
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(max="255", maxMessage="Le titre ne peut excéder {{ limit }} caractères.")
      * @Assert\NotBlank(message="Le titre ne peut être vide")
-     * @Assert\Regex("/plus belle la vie/", match=false, message="Ici, on parle de vraie série")
+     * @Assert\Regex("/plus belle la vie/", match=false, message="On parle de vraies séries ici")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Le synopsis ne peut être vide")
-     * @Assert\Regex("/plus belle la vie/", match=false, message="Ici, on parle de vraie série")
+     * @Assert\Regex("/plus belle la vie/", match=false, message="On parle de vraies séries ici")
      */
     private $summary;
 
