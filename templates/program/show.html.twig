@@ -33,6 +33,18 @@
                     <a href="{{ path('season_new') }}">Create a new season</a>
                 </td>
             </tr>
+            <tr>
+                <th>Acteur</th>
+                <td>
+                    <ul>
+                        {%  for actor in program.actors %}
+                            <li><a href="{{ path('actor_show', {id: actor.id}) }}">{{ actor.name }}</a></li>
+                        {% else %}
+                            <li>Aucun acteur pour cette série</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
         </tbody>
     </table>
 
@@ -41,13 +53,4 @@
     <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
 
     {{ include('program/_delete_form.html.twig') }}
-
-    <strong>Acteur :</strong>
-    <ul>
-        {%  for actor in program.actors %}
-            <li>{{ actor.name }}</li>
-        {% else %}
-            <li>Aucun acteur pour cette série</li>
-        {% endfor %}
-    </ul>
 {% endblock %}
