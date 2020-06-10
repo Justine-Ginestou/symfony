@@ -5,8 +5,10 @@
 {% block body %}
     <h1>Liste des séries de la catégorie {{ category.name }}</h1>
     {% for program in category.programs %}
-        <li><a href="{{ path('program_show', {id: program.id}) }}">{{ program.title }}</a></li>
+        <li><a href="{{ path('program_show', {id: program.id}) }}">{{ program.title }}</a> - <a href="{{ path('program_edit', {id: program.id}) }}">Edit</a> - <a
+                    href="{{ path('program_delete', {id: program.id}) }}">Delete</a></li>
     {% endfor %}
+    <a href="{{ path('program_new') }}">Create program</a>
     <a href="{{ path('app_index') }}">
         Retour à l'accueil
     </a>

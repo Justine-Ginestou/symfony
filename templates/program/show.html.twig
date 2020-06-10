@@ -3,7 +3,7 @@
 {% block title %}Program{% endblock %}
 
 {% block body %}
-    <h1>Program</h1>
+    <h1>Program </h1>
 
     <table class="table">
         <tbody>
@@ -27,7 +27,8 @@
                 <th>Seasons</th>
                 <td>
                     {% for season in program.seasons %}
-                        <li><a href="{{ path('season_show', {id: season.id}) }}">Saison {{ season.number }}</a></li>
+                        <li><a href="{{ path('season_show', {id: season.id}) }}">Saison {{ season.number }}</a> - <a
+                                    href="{{ path('season_edit', {id: season.id}) }}">Edit</a> - <a href="{{ path('season_delete', {id: season.id}) }}">Delete</a></li>
                     {% endfor %}
                     <a href="{{ path('season_new') }}">Create a new season</a>
                 </td>
