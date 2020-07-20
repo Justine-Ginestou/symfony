@@ -31,8 +31,8 @@
                     <img class="align-self-start mr-3" src="{{ program.poster }}" alt="{{ program.title }} poster">
                 </td>
                 <td>
-                    <a href="{{ path('program_show', {'id': program.id}) }}">show</a>
-                    <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+                    <a href="{{ path('program_show', {slug: program.slug}) }}">show</a>
+                    <a href="{{ path('program_edit', {slug: program.slug}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

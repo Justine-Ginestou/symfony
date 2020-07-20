@@ -27,7 +27,7 @@
                 <th>Episodes</th>
                 <td>
                     {% for episode in season.episodes %}
-                        <a href="{{ path('episode_show', {id: episode.id}) }}">{{ episode.number }} . {{ episode.title }}</a>
+                        <a href="{{ path('episode_show', {slug: episode.slug}) }}">{{ episode.number }} . {{ episode.title }}</a>
                         <br>
                     {% endfor %}
                     <a href="{{ path('episode_new') }}">Create a new episode</a>
